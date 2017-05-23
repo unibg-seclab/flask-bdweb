@@ -216,5 +216,21 @@ def secrets(userid):
     return render_template('secrets.html', userid=userid, rows=rows)
 
 
+@app.route('/safe_secrets/<userid>', methods=['GET', 'POST'])
+def safe_secrets(userid):
+    connection = sqlite3.connect(secretsdb)
+    cursor = connection.cursor()
+
+    if request.method == 'POST':
+        note = request.form.get('note')
+        cursor.execute("INSERT INTO secrets VALUES (?, ?)", [userid, note])
+        connection.commit()
+
+    cursor.execute("SELECT data FROM secrets WHERE userid = ?", [userid])
+    rows = cursor.fetchall()
+    connection.close()
+
+    return render_template('secrets.html', userid=userid, rows=rows)
+
 
 app.run(host="0.0.0.0", port=5000)
