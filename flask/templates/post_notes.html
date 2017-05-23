@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>Notes</title>
+</head>
+<body>
+
+    <h1>Notes</h1>
+
+    <ul>
+        {% for note in notes %}
+        <li>{{ note }}</li>
+        {% endfor %}
+    </ul>
+
+    <form action="/post_notes" method="POST">
+        <label for="note">Note:</label>
+        <input type="text" id="note" name="note">
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

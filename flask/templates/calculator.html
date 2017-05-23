@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+
+    <form action="/calculator" method="POST">
+        <input type="text" id="x" name="x" value="{{ x }}">
+        +
+        <input type="text" id="y" name="y" value="{{ y }}">
+        <input type="submit" value="=">
+        {{ x + y }}
+
+    </form>
+
+</body>
+</html>

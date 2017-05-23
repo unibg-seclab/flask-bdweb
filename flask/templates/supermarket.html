@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seclab Market</title>
+</head>
+<body>
+
+    <h1>Supermarket prices</h1>
+
+    <table border="solid">
+
+        <tr>
+            <th>product</th>
+            <th>price</th>
+        </tr>
+
+        {% for key, value in prices.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>
+                {% if value > 0 %}
+                    {{ value }} €
+                {% else %}
+                    <b>free</b>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>

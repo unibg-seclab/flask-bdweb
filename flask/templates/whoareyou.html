@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Whoareyou</title>
+</head>
+<body>
+
+    {% if name %}
+    <p>Hi, {{ name }}.</p>
+    <img src="https://i.imgflip.com/5qqkn.jpg" width="300px"/><br><br>
+    {% endif %}
+
+    <form action="/whoareyou" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>

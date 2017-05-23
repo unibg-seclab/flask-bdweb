@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<head>
+    <title>Voto</title>
+</head>
+<body>
+
+    <h2>Voto esame:
+        {% if voto < 18 %}
+            ins
+
+        {% elif voto > 30 %}
+            30 e lode
+
+        {% else %}
+            {{ voto }}
+
+        {% endif %}
+
+    </h2>
+
+</body>
+</html>
