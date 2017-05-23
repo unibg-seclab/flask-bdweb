@@ -1,2 +1,12 @@
+# sqlite3
 *.db
+
+# python
 *.pyc
+*.pyo
+__pycache__
+
+# intellij
+*.iws
+workspace.xml
+tasks.xml
