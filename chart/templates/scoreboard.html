@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scoreboard</title>
+    <meta http-equiv="refresh" content="60" >
+</head>
+<body>
+
+    <h1>Scoreboard</h1>
+
+    <table border="1">
+        <tr>
+            <th>Account</th>
+            <th>UP</th>
+            <th>Points</th>
+        </tr>
+
+        {% for account in accounts %}
+        <tr style="background-color:{{ 'green' if account.is_up else 'red' }}">
+            <td>{{ account.url }}</td>
+            <td>{{ 'UP' if account.is_up else 'DOWN' }}</td>
+            <td>{{ account.points }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br><p><a href="/register">Register Account</a></p>
+    <br><p><a href="/send">Send Flag</a></p>
+
+
+
+</body>
+</html>
