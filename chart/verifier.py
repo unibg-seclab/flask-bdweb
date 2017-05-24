@@ -21,7 +21,8 @@ def has_flag(account):
 def put_flag(account):
     url = make_url(account)
     flag = make_flag(account)
-    requests.post(url, data={'note': flag})
+    response = requests.post(url, data={'note': flag})
+    response.raise_for_status()
     print('uploaded flag: %s for url: %s' % (flag, url))
 
 
