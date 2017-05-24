@@ -91,7 +91,8 @@ def add(a, b):
 
 ###############################################################################
 # EXE
-# * fare una api che restituisca il prezzo del prodotto
+# * fare una api che restituisca il prezzo del prodotto oppure un messaggio
+# a piacere se il prodotto non c'è
 
 prices = {'strawberry': 2.0, 'lemon': 1.0, 'bitcoin': 2000.0, 'spam': 0}
 
