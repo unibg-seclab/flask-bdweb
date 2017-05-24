@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 from verifier import make_flag
 from database import *
+import requests
 
 app = Flask(__name__)
 app.debug = False
@@ -23,6 +24,12 @@ def register():
 
             if not url.endswith('.pythonanywhere.com'):
                 return 'URL must be on the pythonanywhere.com domain'
+
+            try:
+                response = requests.get('http://%s' % url)
+                response.raise_for_status()
+            except:
+                return 'Sito non disponibile'
 
             account = Account(url=url)
             account.save()
