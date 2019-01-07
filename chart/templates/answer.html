@@ -15,35 +15,12 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Scoreboard</h1>
+      {{ answer }}
     </div>
   </div>
 
   <div class="container">
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Account</th>
-          <th style="width: 80px">UP</th>
-          <th style="width: 40px">Points</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        {% for account in accounts %}
-        <tr style="background-color:{{ 'green' if account.is_up else 'red' }}">
-          <td>{{ account.url }}</td>
-          <td>{{ 'UP' if account.is_up else 'DOWN' }}</td>
-          <td>{{ account.points }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-
-  <div class="container">
-    <a href="/register" class="btn btn-primary" role="button">Register Account</a>
-    <a href="/send" class="btn btn-primary" role="button">Send Flag</a>
+    <a href="/" class="btn btn-secondary" role="button">Back</a>
   </div>
 
 </body>

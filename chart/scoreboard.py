@@ -23,13 +23,13 @@ def register():
             url = url.strip('https://').strip('http://')
 
             if not url.endswith('.pythonanywhere.com'):
-                return 'URL must be on the pythonanywhere.com domain'
+                return render_template('answer.html', answer='URL must be on the pythonanywhere.com domain')
 
             try:
                 response = requests.get('http://%s' % url)
                 response.raise_for_status()
             except:
-                return 'Sito non disponibile'
+                return render_template('answer.html', answer='YOUR website does not seem to be up.')
 
             account = Account(url=url)
             account.save()
@@ -37,6 +37,7 @@ def register():
 
         except:
             return 'Invalid registration'
+            return render_template('answer.html', answer='Invalid registration.')
 
     if request.method == 'GET':
         return render_template('register.html')
@@ -52,12 +53,12 @@ def send():
             url = url.strip('https://').strip('http://')
 
             if not any(flag == make_flag(account) for account in Account.select()):
-                return 'INVALID FLAG'
+                return render_template('answer.html', answer='INVALID FLAG')
 
 
             account = Account.get(Account.url == url)
             if any(flag == captured_flag.flag for captured_flag in account.flags):
-                return 'already captured'
+                return render_template('answer.html', answer='already captured')
 
             else:
                 new_flag = Flag(flag=flag, account=account)
@@ -66,12 +67,12 @@ def send():
                 account.points += 10
                 account.save()
 
-                return 'you got a new flag!'
+                return render_template('answer.html', answer='you got a new flag!')
 
         except KeyboardInterrupt as e:
             pass
 
-        return 'Invalid submission'
+        return render_template('answer.html', answer='Invalid submission')
 
     if request.method == 'GET':
         return render_template('send.html')
